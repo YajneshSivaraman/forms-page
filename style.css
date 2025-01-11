@@ -1,0 +1,7 @@
+.image1{
+    background-image: url('assets/632832.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    backdrop-filter:inherit;
+}
