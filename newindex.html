@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms-Page</title>
+</head>
+<!--Tailwind Css-->
+<script src="https://cdn.tailwindcss.com"></script>
+<!--Roboto-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+<!--Roboto-->
+<!--Nunito-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+<!--Css File-->
+<link rel="stylesheet" href="style.css">
+<!--DB-->
+<!--FireBase SDK-->
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<body>
+    <div class="mx-auto h-screen flex justify-center items-center image1">
+        <div
+            class="flex flex-col items-center border border-[#E7DFF8] h-[500px] w-[450px] backdrop-blur-[15px] rounded-lg shadow-md pt-4">
+
+            <!-- Header -->
+            <section class="space-y-2 w-[100%] text-center">
+                <div class="p-4">
+                    <p class="text-[28px] leading-[20px] font-[Nunito] font-light">
+                        Login Form
+                    </p>
+
+                </div>
+                <hr class="border-t-[1px] border-gray-300 w-[90%] mx-auto">
+            </section>
+            <!-- Header -->
+
+
+
+            <!-- Form-->
+            <section class="flex flex-col items-center w-[75%] my-auto relative">
+                
+                <form id="form" class="w-full space-y-[50px]">
+                    <!--Email-->
+                    <div class="space-y-2">
+                        <label for="email" class="text-[16px] leading-[20px] font-[Roboto] font-light relative" id="elabel">Email Id</label>
+                        <input type="text" id="email"
+                            class="w-[100%] font-light text-purple-700 rounded-[20px] font-[Nunito] h-[40px] p-4 bg-white/20 shadow-lg border focus:outline-purple-700 border-gray-200/20 backdrop-blur-[15px] placeholder-purple-700 text-[14px]"
+                            placeholder="Enter Email">
+                            <svg
+                            width="20px"
+                            height="15px"
+                            class="fill-[#f54272] absolute bottom-30px z-1 hidden"
+                            viewbox="0 0 16 16"
+                            
+                            id="esvg"
+                       
+                          >
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                          </svg>
+                        <p id="emailerr" 
+                            class="font-[Roboto] text-[12px] leading-[16px] font-normal left-[15px] relative text-[#f54272] ml-2"></p>
+                      
+                    </div>
+                    <!--Email-->
+
+
+                    <!-- Password-->
+                    <div class="space-y-2">
+                        <label for="password"
+                            class="text-[16px] leading-[20px] font-[Roboto] font-light relative" id="plabel">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password"
+                                class="w-[100%] rounded-[20px]  text-purple-700  font-light h-[40px] font-[Nunito] p-4 bg-white/20 shadow-lg border focus:outline-purple-700 border-gray-200/20 placeholder-purple-700 text-[14px]"
+                                placeholder="Enter Password">
+
+
+                            <button class="absolute right-4 top-3" id="toggle" type="button">
+                                <!--Eye Close-->
+                                <svg id="eyeClose" ; width="1em" height="1em" fill="currentColor" viewbox="0 0 24 24"
+                                    class="fill-[#9c0c73]">
+                                    <path
+                                        d="m10.13 15.842-.787 2.94-1.932-.517.787-2.94a10.988 10.988 0 0 1-3.237-1.871l-2.153 2.153-1.414-1.414 2.153-2.154a10.957 10.957 0 0 1-2.371-5.07l.9-.164A16.923 16.923 0 0 0 12 10c3.704 0 7.132-1.184 9.924-3.195l.9.163a10.958 10.958 0 0 1-2.37 5.071l2.153 2.154-1.414 1.414-2.154-2.153a10.989 10.989 0 0 1-3.237 1.872l.788 2.939-1.932.517-.788-2.94a11.078 11.078 0 0 1-3.74 0z" />
+                                </svg>
+
+                                <!--Eye open-->
+                                <svg id="eyeOpen" width="1em" height="1em" fill="currentColor" viewbox="0 0 16 16"
+                                    class="fill-[#9c0c73] hidden">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                    <path
+                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                                </svg>
+                            </button>
+
+
+
+
+                        </div>
+                        <svg
+                        width="20px"
+                        height="15px"
+                        class="fill-[#f54272] absolute bottom-30px hidden"
+                        viewbox="0 0 16 16"
+                        
+                        id="psvg"
+                   
+                      >
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                      </svg>
+
+                        <p id="passerr" class="font-[Roboto] text-[12px] leading-[16px] relative left-[15px] font-normal  text-[#f54272] ml-2">
+                        </p>
+
+                       
+
+                    </div>
+                    <!-- Password-->
+                    
+
+                    <!--Button -->
+                    <div class="text-center">
+                        <button
+                            class="text-[20px] leading-[30px] font-[Nunito] bg-[#600373]/50 bg-gradient-to-b from-[#b306d6]/50 to-[#600373]/40 font-light py-1 px-3 w-[150px] rounded-[30px]  text-white/80 backdrop-blur-[50px] shadow-lg">
+                            Login
+                        </button>
+                    </div>
+                    <!--Button -->
+
+
+
+                </form>
+
+                <div class="bg-[#D9B9EF] backdrop-blur-[50px] p-2 w-[70%] rounded-[9px] shadow-purple-700/50 absolute top-[240px] left-2 shadow-xl z-10 hidden" id="overlay">
+                    <p class="font-[Roboto] font-light text-[16px] leading-[20px] text-[#2c1a50]">Password must contain:</p>
+                    <hr class="border-[#fc034e]/20">
+                    <ul>
+                        <li class="font-[Nunito] font-light text-[12px] leading-[16px] text-[#574183]">Minimum 8 characters </li>
+                        <li class="font-[Nunito] font-light text-[12px] leading-[16px] text-[#574183]">At least one uppercase English letter</li>
+                        <li class="font-[Nunito] font-light text-[12px] leading-[16px] text-[#574183]">At least one lowercase English letter</li>
+                        <li class="font-[Nunito] font-light text-[12px] leading-[16px] text-[#574183]">At least one digit</li>
+                        <li class="font-[Nunito] font-light text-[12px] leading-[16px] text-[#574183]">At least one special character</li>                                 
+                    </ul>
+                </div>
+            
+         
+            </section>
+            <!-- Form-->
+
+        </div>
+    </div>
+</body>
+
+<script>
+    const forms = document.getElementById("form");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const emailErr = document.getElementById("emailerr");
+    const passErr = document.getElementById("passerr");
+    const info = document.getElementById("info")
+
+
+
+
+
+function saveData(email,password){
+        // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDWOcObVsBurAADqCCBAyeysVeclf53hmE",
+  authDomain: "yajnesh-projects.firebaseapp.com",
+  databaseURL: "https://yajnesh-projects-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "yajnesh-projects",
+  storageBucket: "yajnesh-projects.firebasestorage.app",
+  messagingSenderId: "800852291561",
+  appId: "1:800852291561:web:e74f81c1a3d2e7ec116578"
+};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database().ref("ReqForm");
+
+
+db.push({
+  
+  email: email,
+  password: password
+});
+   
+
+}
+
+
+    email.addEventListener("input", (e) => {
+        const emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/
+        const esvg = document.getElementById("esvg");
+        
+
+        if (e.target.value === "") {
+            emailerr.textContent = "Field Required";
+            esvg.classList.remove('hidden');
+            
+        }
+        else if (!e.target.value.match(emailRegex)){
+            emailerr.textContent = " Try using the format yourname@email.com";
+            esvg.classList.remove('hidden');
+      
+                   
+        }
+        else {
+            emailerr.textContent = " ";
+            esvg.classList.add('hidden');
+            
+           
+        }
+    });
+
+    const elabel=document.getElementById("elabel")
+
+    email.addEventListener("focus", (e)=>{
+       elabel.classList.add('text-[13px]','leading-[14px]','text-[#ff1f71]','bottom-3');
+    })
+
+    email.addEventListener("blur", (e)=>{
+       elabel.classList.remove('text-[13px]','leading-[14px]','text-[#ff1f71]','bottom-3');
+    })
+    
+    const plabel=document.getElementById("plabel")
+
+password.addEventListener("focus", (f)=>{
+   plabel.classList.add('text-[13px]','leading-[14px]','text-[#ff1f71]','bottom-3');
+})
+
+password.addEventListener("blur", (f)=>{
+   plabel.classList.remove('text-[13px]','leading-[14px]','text-[#ff1f71]','bottom-3');
+})
+
+
+
+    password.addEventListener("input", (e) => {
+        const psvg = document.getElementById("psvg");
+        const passwordRegex=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+
+        if (e.target.value === "") {
+            passerr.textContent = "Field Required";
+            psvg.classList.remove('hidden');
+
+
+        }
+        else {
+            passerr.textContent = " ";
+            psvg.classList.add('hidden');
+        }
+    })
+
+    password.addEventListener("click", (e)=>{
+        
+    })
+
+    forms.addEventListener("submit", (pd) => {
+        pd.preventDefault();
+        let isvalid = advanceValidation(email.value, password.value)
+        if(isvalid==true){
+            console.log("Saving Data To DB")
+            saveData(email.value,password.value);
+        }
+    });
+
+    function advanceValidation(email, password) {
+        const emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/
+        let isValid=true;
+
+
+        if (email.match(emailRegex)) {
+            console.log("Email Validation- Successful")
+        }
+        else {
+            console.log("Email Validation- Failed")
+            emailErr.textContent = "Invalid Email ID";
+            esvg.classList.remove('hidden');
+            isValid=false;
+        }
+
+        const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+        if (password.match(passwordRegex)) {
+            console.log("Password Validation- Successful")
+        }
+        else {
+            console.log("Password validation- Failed")
+            passErr.textContent = "Invalid Password Format";
+            psvg.classList.remove('hidden');
+            isValid=false;
+        }
+
+        return isValid;
+    }
+
+    const passwordInput = document.getElementById('password');
+    const toggleButton = document.getElementById('toggle');
+    const eyeOpen = document.getElementById('eyeOpen');
+    const eyeClose = document.getElementById('eyeClose');
+
+    // Toggle Password
+    toggleButton.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeOpen.classList.remove('hidden');
+            eyeClose.classList.add('hidden');
+        } else {
+            passwordInput.type = 'password';
+            eyeOpen.classList.add('hidden');
+            eyeClose.classList.remove('hidden');
+        }
+    });
+
+// overlay
+const overlay=document.getElementById('overlay');
+
+psvg.addEventListener("mouseover",()=>{
+    overlay.classList.remove('hidden');
+})
+  
+    psvg.addEventListener('mouseleave',()=>{
+        overlay.classList.add('hidden');
+
+})
+
+
+
+</script>
+
+</html>
